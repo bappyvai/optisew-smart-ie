@@ -530,21 +530,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 22 LTS
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
       - name: Install Dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-
-      - name: Lint Codebase
-        run: npm run lint
+        run: npm install --legacy-peer-deps --no-audit --no-fund
 
       - name: Build Production Bundle
         run: npm run build

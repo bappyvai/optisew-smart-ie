@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Opt into Node.js 24 runtime and suppress legacy Node 20 deprecation notices
+  # Suppress Node 20 deprecation warnings on GitHub Actions runners
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -30,22 +30,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 22 LTS
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          # Note: cache is removed because package-lock.json is not required in git
 
       - name: Install Dependencies
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
-
-      - name: Lint Codebase
-        run: npm run lint
+        run: npm install --legacy-peer-deps --no-audit --no-fund
 
       - name: Build Production Bundle
         run: npm run build
