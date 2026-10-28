@@ -1,0 +1,6 @@
+{
+  "name": "OptiSew Smart IE - Garment Industrial Engineering MES",
+  "description": "Smart Industrial Engineering system for garment manufacturing: Mother Operation Master, GSD Operations, Style SMV Mapping, Line Layout & Workstation Balancing, 1000 HRIS Operators, 2000 Machine Inventory, Live Stopwatch Capacity Study & Skill Matrix, and IE Dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
